@@ -1,0 +1,1 @@
+emit('newMessage', this.id);
