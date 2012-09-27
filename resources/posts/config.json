@@ -5,16 +5,16 @@
 			"name": "url",
 			"type": "string",
 			"typeLabel": "string",
-			"required": false,
+			"required": true,
 			"id": "url",
 			"order": 0
 		},
-		"category": {
-			"name": "category",
-			"type": "string",
-			"typeLabel": "string",
+		"upVotes": {
+			"name": "upVotes",
+			"type": "number",
+			"typeLabel": "number",
 			"required": false,
-			"id": "category",
+			"id": "upVotes",
 			"order": 1
 		}
 	}

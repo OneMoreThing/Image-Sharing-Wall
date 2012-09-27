@@ -1,0 +1,1 @@
+this.upVotes+=1;
