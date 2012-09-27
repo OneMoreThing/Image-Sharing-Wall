@@ -11,10 +11,10 @@ $(function() {
 				$('input').val(null);
 				fetchPictures();
 			});
-		};		
+		};
 	});
 	function fetchPictures() {
-		dpd.posts.get(function (messages) {
+		dpd.posts.get({$sort: {upVotes: 1}},function (messages) {
 			$('#picture-wall').empty();
 			if(!messages) return;
 			messages.reverse();
@@ -31,17 +31,20 @@ $(function() {
 		});
 	}
 	function addPicture(id, url, classes) {
-		$('#picture-wall').prepend('<div class="'+classes+'"><img class="thumbs-up" src="thumbs-up.png"><img class="thumbnail" id="'+id+'" src="' + url + '"></div>');
+		$('#picture-wall').prepend('<div id="'+id+'" class="picture-container '+classes+'"><img class="thumbs-up" src="thumbs-up.png"><img class="thumbnail" src="' + url + '"></div>');
+		if (localStorage['voted-'+id])
+			$("#" + id + " .thumbs-up").addClass("rotate");
 		bindVoting();
 	}
 	function bindVoting() {
 		$("img").unbind('click');
 		$(".thumbs-up").click(function() {
-			var pictureId = $(this).next().attr('id');
-			if (localStorage['voted-'+pictureId]) return; //check for previous votes from this browser
-				dpd.posts.put({id: pictureId}, function () {
-					localStorage['voted-'+pictureId] = true; //record vote in the browsers local storage
-				});
+			var pictureId = $(this).parent().attr('id');
+			if (localStorage['voted-'+pictureId]) return; //check for previous votes from this browser 
+			$(this).addClass("rotate");
+			dpd.posts.put({id: pictureId}, function () {
+				localStorage['voted-'+pictureId] = true; //record vote in the browsers local storage
+			});
 		});
 	}
 });
