@@ -4,6 +4,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="dpd.js"></script>
 	<script type="text/javascript" src="scripts.js"></script>
+	<script type="text/javascript" src="register.js"></script>
 	<style>
 	.new-picture {
 		display:none;
@@ -25,11 +26,29 @@
 		float: left;
 		height: 200px;
 	}
+	#register-panel, #login-panel, #user-menu {
+		display: none;
+	}
 	</style>
 </head>
 <body>
+	<div id="register-panel">
+		<input type="text" required="required" class="username" placeholder="Username">
+		<input type="password" required="required" class="password" placeholder="Password">
+		<button id="register">Register</button>
+	</div>
+	<div id="login-panel">
+		<input type="text" required="required" class="username" placeholder="Username">
+		<input type="password" required="required" class="password" placeholder="Password">
+		<button id="login">Login</button>
+		<button id="show-register">Create Account</button>
+	</div>
+	<div id="user-menu">
+		<span id="greeting"></span>
+		<span id="logout">Logout</span>
+	</div>
 	<h1>Post Board</h1>
-	<input type="text" placeholder="Enter URL here"><button>Post</button>
+	<input id='pictureUrl' type="text" placeholder="Enter URL here"><button id="post">Post</button>
 	<div id="picture-wall"></div>
 </body>
 </html>

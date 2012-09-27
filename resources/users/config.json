@@ -1,0 +1,13 @@
+{
+	"type": "UserCollection",
+	"properties": {
+		"pictures": {
+			"name": "pictures",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "pictures",
+			"order": 0
+		}
+	}
+}

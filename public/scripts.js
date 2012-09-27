@@ -3,15 +3,19 @@ $(function() {
 		fetchSinglePicture(pictureId);
 		console.log("Looking up picture: " + pictureId);
 	});
-	$("button").click(function() {
+	$("button#post").click(function() {
 		var img = new Image();
-		img.src = $('input').val();
+		img.src = $('#pictureUrl').val();
 		img.onload = function() {
 			dpd.posts.post({url: img.src}, function () {
-				$('input').val(null);
+				$('#pictureUrl').val(null);
 				fetchPictures();
 			});
 		};
+	});
+	$('#show-register').click(function() {
+		$('#login-panel').fadeOut();
+		$('#register-panel').fadeIn();
 	});
 	function fetchPictures() {
 		dpd.posts.get({$sort: {upVotes: 1}},function (messages) {
